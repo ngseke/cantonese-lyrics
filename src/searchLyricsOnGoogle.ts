@@ -1,8 +1,8 @@
-import axios from 'axios'
 import * as cheerio from 'cheerio'
+import { axiosWithHeaders } from './axiosWithHeaders'
 
 export async function searchLyricsOnGoogle (keyword: string) {
-  const { data } = await axios.get(
+  const { data } = await axiosWithHeaders.get(
     'https://www.google.com/search',
     {
       params: { q: `${keyword}+歌詞` },

@@ -1,5 +1,6 @@
 import { askKeyword } from './src/askKeyword'
 import { searchLyricsOnGoogle } from './src/searchLyricsOnGoogle'
+import { searchLyricsOnKkbox } from './src/searchLyricsOnKkbox'
 import { fetchPingyam } from './src/fetchPingyam'
 import { startAndOpen } from './src/server'
 
@@ -8,7 +9,12 @@ async function run () {
   if (!keyword) process.exit(1)
 
   console.log(`🔍 Searching "${keyword}"...`)
-  const lyrics = await searchLyricsOnGoogle(keyword)
+  let lyrics = await searchLyricsOnKkbox(keyword)
+
+  if (!lyrics) {
+    console.log(`🔍 Searching "${keyword}"....`)
+    lyrics = await searchLyricsOnGoogle(keyword)
+  }
 
   if (!lyrics) {
     console.log('😶 找不到結果')
