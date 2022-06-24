@@ -1,0 +1,19 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "cSpell.words": [
+    "clsx",
+    "leetcode",
+    "notac"
+  ],
+  "i18n-ally.dirStructure": "auto",
+  "i18n-ally.localesPaths": [
+    "src/pages/Popup/langs"
+  ],
+  "i18n-ally.enabledFrameworks": [
+    "react"
+  ],
+  "i18n-ally.sourceLanguage": "en",
+  "i18n-ally.keystyle": "nested"
+}
