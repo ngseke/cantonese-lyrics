@@ -6,7 +6,7 @@
   "scripts": {
     "start": "ts-node ."
   },
-  "author": "",
+  "author": "ngseke <ngseke@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "@types/inquirer": "^8.2.1",
