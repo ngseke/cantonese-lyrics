@@ -1,21 +1,13 @@
 import * as cheerio from 'cheerio'
 import { axiosWithHeaders } from './axiosWithHeaders'
+import { searchOnGoogle } from './searchOnGoogle'
 
 async function getKkboxLink (keyword: string) {
-  const { data } = await axiosWithHeaders.get(
-    'https://www.google.com/search',
-    {
-      params: { q: `${keyword}+歌詞+site:www.kkbox.com` },
-      headers: {
-        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36',
-        'accept-language': 'zh-TW,zh;q=0.9',
-      },
-    }
-  )
+  const data = await searchOnGoogle(`${keyword}+歌詞+site:www.kkbox.com`)
   const $ = cheerio.load(data)
 
   const $results = $('#rso a')
-  const $firstResult = $($results.first())
+  const $firstResult = $results.first()
 
   const link = $firstResult.attr('href')
 
