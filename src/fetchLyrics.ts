@@ -13,10 +13,12 @@ export async function fetchLyrics (keyword: string) {
     }
   )
   const $ = cheerio.load(data)
-  const $lyrics = $('[data-lyricid] > div:nth-child(1) > div:nth-child(2)')
+  const $lyrics = $('[jsname="WbKHeb"]')
     .find('br')
     .replaceWith('\n')
     .end()
 
-  return $lyrics.text()
+  return [...$lyrics.children()]
+    .map($section => $($section).text())
+    .join('\n'.repeat(2))
 }
