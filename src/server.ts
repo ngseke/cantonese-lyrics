@@ -2,9 +2,8 @@ import pug from 'pug'
 import express from 'express'
 import open from 'open'
 
-const compiledFunction = pug.compileFile('./src/template.pug')
-
 function createPage (lyrics: string) {
+  const compiledFunction = pug.compileFile('./src/template.pug')
   const html = compiledFunction({
     lyrics,
   })
