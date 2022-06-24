@@ -1,5 +1,5 @@
 import { askKeyword } from './src/askKeyword'
-import { fetchLyrics } from './src/fetchLyrics'
+import { searchLyricsOnGoogle } from './src/searchLyricsOnGoogle'
 import { fetchPingyam } from './src/fetchPingyam'
 import { startAndOpen } from './src/server'
 
@@ -8,7 +8,7 @@ async function run () {
   if (!keyword) process.exit(1)
 
   console.log(`🔍 Searching "${keyword}"...`)
-  const lyrics = await fetchLyrics(keyword)
+  const lyrics = await searchLyricsOnGoogle(keyword)
 
   if (!lyrics) {
     console.log('😶 找不到結果')

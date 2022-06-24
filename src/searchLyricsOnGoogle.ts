@@ -1,7 +1,7 @@
 import axios from 'axios'
 import * as cheerio from 'cheerio'
 
-export async function fetchLyrics (keyword: string) {
+export async function searchLyricsOnGoogle (keyword: string) {
   const { data } = await axios.get(
     'https://www.google.com/search',
     {
