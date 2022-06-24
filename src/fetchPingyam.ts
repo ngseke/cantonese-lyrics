@@ -6,7 +6,7 @@ export async function fetchPingyam (input: string) {
     input,
     kpc_selectpingyam: 'py_jyutping',
     kpc_display_mode: 'kpc_display_mode_ruby_1_on_1',
-  })
+  }).toString().replaceAll('%0A', '%0D%0A')
 
   const { data } = await axios.post(
     'https://hongkongvision.com/tool/cc_py_conv_zh',
