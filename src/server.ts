@@ -14,8 +14,7 @@ export function startAndOpen (title: string, lyrics: string) {
 
   app.get('*', (req, res) => {
     res.on('finish', () => {
-      console.log('✅')
-      process.exit(0)
+      process.exit()
     })
     res.send(createPage(title, lyrics))
     res.end()
