@@ -2,23 +2,22 @@ import pug from 'pug'
 import express from 'express'
 import open from 'open'
 
-function createPage (lyrics: string) {
+function createPage (title: string, lyrics: string) {
   const compiledFunction = pug.compileFile('./src/template.pug')
-  const html = compiledFunction({
-    lyrics,
-  })
+  const html = compiledFunction({ title, lyrics })
   return html
 }
 
-export function start (lyrics: string) {
+export function startAndOpen (title: string, lyrics: string) {
   const port = 9999
   const app = express()
+
   app.get('*', (req, res) => {
     res.on('finish', () => {
       console.log('✅')
       process.exit(0)
     })
-    res.send(createPage(lyrics))
+    res.send(createPage(title, lyrics))
     res.end()
   })
 
